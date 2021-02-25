@@ -1,0 +1,8 @@
+numpy
+scipy
+mir_eval
+librosa
+matplotlib
+scikit-learn
+theano
+tensorflow
