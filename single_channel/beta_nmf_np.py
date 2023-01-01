@@ -1,5 +1,5 @@
 """
- Contains an error which makes the soundlevels go down.
+ Implementation of beta-divergence nonnegative matrix factorisation in numpy. This class only looks at the itakura-saito divergence (beta = 2)
 """
 
 import time
@@ -19,6 +19,17 @@ import corpus
 class beta_NMF(object):
     """docstring for beta_NMF"""
     def __init__(self, frequencies, time_steps, sources, X):
+	"""
+        NMF constructor
+
+        The W matrix shows the frequencies per source
+        The H matrix shows the activation per time step per source. Ie how does the time_step belongs to source X and source Y
+
+        Keyword arguments:
+        frequencies -- the number of frequencies we want to approximate
+        time_steps -- length of the file we want to approximate
+        sources -- the number of sources we want to recognise
+	"""
         super(beta_NMF, self).__init__()
         self._frequencies = frequencies
         self._time_steps = time_steps
@@ -30,6 +41,9 @@ class beta_NMF(object):
         index = 0
 
     def train(self):
+	"""
+        Train the NMF
+	"""
 
         for epoch in range(self._epochs):
             tick = time.time()
@@ -54,6 +68,9 @@ class beta_NMF(object):
         return self._W, self._H
 
     def reconstruct(self,k):
+	"""
+        Reconstruct a source (k) by applying a Wiener filter
+	"""
         # V_hat = th.dot(W, H)
         # W = W[:,k].reshape((-1,1))
         # H = H[k,:].reshape((1,-1))

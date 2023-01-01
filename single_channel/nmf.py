@@ -1,5 +1,5 @@
 '''
-NMF.py
+Theano implementation for beta-divergence nonnegative matrix factorisation. This uses multiple cost and associated update functions (among others Itakura-Saito and Cauchy).
 '''
 
 from utils import create_mixture, do_STFT_on_data
