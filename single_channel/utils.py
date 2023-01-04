@@ -13,6 +13,60 @@ import os
 
 from itertools import combinations
 
+# def normal(W,H):
+#     return th.dot(W,H)
+#
+# def convolution(W,H, win=0):
+#     try:
+#         n,r,_ = W.shape
+#     except:
+#         return normal(W,H)
+#
+#
+#     m = H.shape[1]
+#
+#     epsi = 1e-20
+#
+#     V_hat = T.zeros((n,m))
+#     for t in range(win):
+#         V_hat = V_hat + T.dot(W[:,:,t], shift(H, t))
+#
+#     return V_hat
+#
+# def shift(H, t):
+#     if t < 0:
+#         O = T.concatenate([H[:,-t:], T.zeros((H.shape[0],-t))], axis=1)
+#     elif t == 0:
+#         O = T.concatenate([H[:,:], T.zeros((H.shape[0],-t))], axis=1)
+#     else:
+#         O = T.concatenate([T.zeros((H.shape[0],t)), H[:,:-t]], axis=1)
+#
+#     return O
+#
+# def normalise_H(H,type, norm_size):
+#     if type == 0:
+#         return H
+#     elif type == 1:
+#         for i in range(2):
+#             # H[i,:] = H[i,:] / T.sum(T.abs_(H[i,:]))
+#             H = T.set_subtensor(H[i,:], H[i,:] / T.sum(T.abs_(H[i,:])))
+#     elif type == 2:
+#         for i in range(norm_size):
+#             # H[i,:] = H[i,:] / T.sqrt(T.sum(T.abs_(H[i,:])))
+#             H = T.set_subtensor(H[:,i], H[:,i] / T.sqrt(T.sum(T.abs_(H[:,i]))))
+#
+# def normalise_W(W,type, norm_size):
+#     if type == 0:
+#         return W
+#     elif type == 1:
+#         for i in range(norm_size):
+#             # W[i,:] = W[i,:] / T.sum(T.abs_(W[i,:]))
+#             W = T.set_subtensor(W[i,:], W[i,:] / T.sum(T.abs_(W[i,:])))
+#     elif type == 2:
+#         for i in range(norm_size):
+#             # W[i,:] = W[i,:] / T.sqrt(T.sum(T.abs_(W[i,:])))
+#             W = T.set_subtensor(W[i,:], W[i,:] / T.sqrt(T.sum(T.abs_(W[i,:]))))
+
 def quadratic_STFT(V, sr, win):
     lf = 8
     lt = 2
